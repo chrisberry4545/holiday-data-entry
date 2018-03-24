@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import * as uuidv1 from 'uuid/v1';
 
+import './input-with-label.scss';
+
 import {
   InputWithLabelStateProps,
 } from './';
@@ -18,7 +20,8 @@ export const InputWithLabelPresentation: React.SFC<InputWithLabelStateProps>
     };
     return (
       <div>
-        <label htmlFor={ elementId }>{ label }</label>
+        <label className='.o-spacing-bottom-small c-input-with-label__label'
+          htmlFor={ elementId }>{ label }</label>
         { childrenWithId }
       </div>
     );

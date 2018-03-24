@@ -12,7 +12,7 @@ export const HolidayDetailsPresentation: React.SFC<
   HolidayDetailsCombinedProps
 > = ({ holiday, goToEditHoliday }) => {
   return holiday ? (
-    <div>
+    <div className='o-container'>
       <h1>{ holiday.name } - details</h1>
       <button onClick={ () => goToEditHoliday(holiday) }>Edit</button>
       <h2>Highlights</h2>
