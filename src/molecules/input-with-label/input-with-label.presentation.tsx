@@ -20,7 +20,7 @@ export const InputWithLabelPresentation: React.SFC<InputWithLabelStateProps>
     };
     return (
       <div>
-        <label className='.o-spacing-bottom-small c-input-with-label__label'
+        <label className='c-input-with-label__label'
           htmlFor={ elementId }>{ label }</label>
         { childrenWithId }
       </div>
