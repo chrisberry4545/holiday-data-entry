@@ -15,10 +15,12 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
-    "start": "node scripts/start.js partner-1",
+    "dev": "node scripts/start.js partner-1",
+    "dev-alt": "node scripts/start.js partner-2",
     "build": "node scripts/build.js partner-1",
-    "test": "node scripts/test.js --env=jsdom",
-    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'"
+    "start": "npm run build",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "@chrisb-dev/holiday-shared-models": "1.0.39",
