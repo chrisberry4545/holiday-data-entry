@@ -17,7 +17,8 @@
   "scripts": {
     "start": "node scripts/start.js partner-1",
     "build": "node scripts/build.js partner-1",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'"
   },
   "devDependencies": {
     "@chrisb-dev/holiday-shared-models": "1.0.39",
