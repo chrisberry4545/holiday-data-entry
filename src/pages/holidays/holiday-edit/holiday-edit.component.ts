@@ -17,7 +17,7 @@ import {
   Action,
   addBlankHolidayActivity,
   addBlankHolidayHighlight,
-  printHolidayData,
+  saveHolidayDataThunk,
   updateHolidayActivity,
   updateHolidayCountry,
   updateHolidayData,
@@ -163,8 +163,12 @@ const mapDispatchToProps = (
         } as HolidayHighlightInterface,
       ));
     },
-    printData: () => {
-      dispatch(printHolidayData());
+    saveData: (holidayId: string) => {
+      dispatch(
+        saveHolidayDataThunk(
+          holidayId,
+        ) as any,
+      );
     },
   };
 };

@@ -1,5 +1,5 @@
 export interface HolidayEditDispatchProps {
-  printData: () => void;
+  saveData: (holidayId: string) => void;
   holidayNameChange: (
     holidayId: string,
     newName: string,

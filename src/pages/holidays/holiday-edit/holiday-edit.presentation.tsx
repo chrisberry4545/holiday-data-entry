@@ -24,7 +24,7 @@ export const HolidayEditPresentation: React.SFC<
   HolidayEditCombinedProps
 > = ({
   holiday, allActivities, allCountries, allFlights,
-  printData, holidayNameChange, holidayMainImageChange,
+  saveData, holidayNameChange, holidayMainImageChange,
   holidayDescriptionChanged, holidayCountryChange,
   holidayFlightTimeChange, holidayFlightCostChange,
   onAddActivity, onAddHighlight, onHolidayActivityChanged,
@@ -194,8 +194,8 @@ export const HolidayEditPresentation: React.SFC<
         </button>
       </section>
 
-      <button onClick={ printData }>
-        Download data
+      <button onClick={ () => saveData(holiday._id) }>
+        Save
       </button>
     </div>
   ) : <div>No holiday with this id</div>;

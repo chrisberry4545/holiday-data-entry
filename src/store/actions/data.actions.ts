@@ -18,10 +18,3 @@ export function setData(
     type: SET_DATA,
   };
 }
-
-export const PRINT_HOLIDAY_DATA = 'PRINT_DATA';
-export function printHolidayData(): Action {
-  return {
-    type: PRINT_HOLIDAY_DATA,
-  };
-}

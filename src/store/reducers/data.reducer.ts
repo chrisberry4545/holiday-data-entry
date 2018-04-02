@@ -6,7 +6,6 @@ import {
   ADD_BLANK_HOLIDAY_HIGHLIGHT,
   AddBlankHolidayActivityAction,
   AddBlankHolidayHighlightAction,
-  PRINT_HOLIDAY_DATA,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
   UPDATE_HOLIDAY_DATA,
@@ -40,18 +39,6 @@ export function dataReducer(
   state = getDefaultState(), action: Action,
 ): AllDataInterface {
   switch (action.type) {
-    case PRINT_HOLIDAY_DATA:
-      const holidaysWithNames = state.holidays.map((holiday) => ({
-        holiday,
-        name: holiday.name.toUpperCase().replace(' ', '_'),
-      }));
-      const holidayMap = {};
-      holidaysWithNames.forEach(({ holiday, name }) => {
-        holidayMap[name] = holiday;
-      });
-      // tslint:disable-next-line
-      console.log(JSON.stringify(holidayMap));
-      return state;
     case UPDATE_HOLIDAY_DATA:
       const updateHolidayDataAction = action as UpdateHolidayDataAction;
       return {
