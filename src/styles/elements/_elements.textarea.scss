@@ -1,0 +1,5 @@
+textarea {
+  @include input-styling;
+  resize: none;
+  height: 200px;
+}

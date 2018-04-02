@@ -1,8 +1,6 @@
 select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  font-size: 14px;
+  @include input-styling;
+  border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

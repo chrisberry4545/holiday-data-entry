@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './holiday-edit.scss';
+
 import {
   HolidayEditDispatchProps,
   HolidayEditStateProps,
@@ -7,6 +9,7 @@ import {
 
 import {
   SelectBoxPresentation,
+  TextAreaPresentation,
   TextBoxPresentation,
 } from './../../../elements';
 
@@ -22,16 +25,17 @@ export const HolidayEditPresentation: React.SFC<
 > = ({
   holiday, allActivities, allCountries, allFlights,
   printData, holidayNameChange, holidayMainImageChange,
-  holidayCountryChange, holidayFlightTimeChange, holidayFlightCostChange,
+  holidayDescriptionChanged, holidayCountryChange,
+  holidayFlightTimeChange, holidayFlightCostChange,
   onAddActivity, onAddHighlight, onHolidayActivityChanged,
   onHolidayHighlightDescriptionChanged,
   onHolidayHighlightImageUrlChanged, onHolidayHighlightTitleChanged,
 }) => {
   return holiday ? (
-    <div className='o-container'>
+    <div className='o-container c-holiday-edit'>
       <h1>{ holiday.name } - edit</h1>
 
-      <form>
+      <section className='c-holiday-edit__section'>
         <div className='o-spacing-bottom'>
           <InputWithLabelPresentation
             label={ 'Holiday name' }>
@@ -57,6 +61,16 @@ export const HolidayEditPresentation: React.SFC<
 
         <div className='o-spacing-bottom'>
           <InputWithLabelPresentation
+            label={ 'Holiday description' }>
+            <TextAreaPresentation value={ holiday.description }
+              onChange={ (newValue) => (
+                holidayDescriptionChanged(holiday._id, newValue)
+              ) }/>
+          </InputWithLabelPresentation>
+        </div>
+
+        <div className='o-spacing-bottom'>
+          <InputWithLabelPresentation
             label={ 'Country' }>
             <SelectBoxPresentation options={ allCountries.map((country) => ({
               label: country.name,
@@ -67,6 +81,9 @@ export const HolidayEditPresentation: React.SFC<
           </InputWithLabelPresentation>
         </div>
 
+      </section>
+
+      <section className='c-holiday-edit__section'>
         <h3>Flights</h3>
 
         <div className='o-spacing-bottom'>
@@ -91,14 +108,16 @@ export const HolidayEditPresentation: React.SFC<
             ) }/>
           </InputWithLabelPresentation>
         </div>
+      </section>
 
+      <section className='c-holiday-edit__section'>
         <h3>Activities</h3>
 
         { holiday.activities.map((activity, activityIndex) => (
           <div className='o-spacing-bottom'>
             <InputWithLabelPresentation
               key={ activity._id }
-              label={ 'Activity name' }>
+              label={ `Activity ${activityIndex + 1}` }>
               <SelectBoxPresentation options={
                   allActivities.map((activityCategory) => ({
                     label: activityCategory.name,
@@ -119,10 +138,14 @@ export const HolidayEditPresentation: React.SFC<
           Add activity
         </button>
 
+      </section>
+
+      <section className='c-holiday-edit__section'>
         <h3>Highlights</h3>
 
-        { holiday.highlights.map((highlight) => (
-          <div key={ highlight._id }>
+        { holiday.highlights.map((highlight, highlightIndex) => (
+          <div key={ highlight._id } className='c-holiday-edit__sub-section'>
+            <h4>{ `Highlight ${highlightIndex + 1}` }</h4>
             <div className='o-spacing-bottom'>
               <InputWithLabelPresentation
                 label={ 'Highlight title' }>
@@ -138,7 +161,7 @@ export const HolidayEditPresentation: React.SFC<
             <div className='o-spacing-bottom'>
               <InputWithLabelPresentation
                 label={ 'Highlight description' }>
-                <TextBoxPresentation value={ highlight.description }
+                <TextAreaPresentation value={ highlight.description }
                   onChange={ (newValue) => (
                     onHolidayHighlightDescriptionChanged(
                       holiday._id, highlight._id, newValue,
@@ -169,7 +192,7 @@ export const HolidayEditPresentation: React.SFC<
           onClick={ () => onAddHighlight(holiday._id) }>
           Add highlight
         </button>
-      </form>
+      </section>
 
       <button onClick={ printData }>
         Download data
