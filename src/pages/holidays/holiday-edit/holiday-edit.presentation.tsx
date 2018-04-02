@@ -25,7 +25,8 @@ export const HolidayEditPresentation: React.SFC<
 > = ({
   holiday, allActivities, allCountries, allFlights,
   printData, holidayNameChange, holidayMainImageChange,
-  holidayCountryChange, holidayFlightTimeChange, holidayFlightCostChange,
+  holidayDescriptionChanged, holidayCountryChange,
+  holidayFlightTimeChange, holidayFlightCostChange,
   onAddActivity, onAddHighlight, onHolidayActivityChanged,
   onHolidayHighlightDescriptionChanged,
   onHolidayHighlightImageUrlChanged, onHolidayHighlightTitleChanged,
@@ -56,6 +57,16 @@ export const HolidayEditPresentation: React.SFC<
         </div>
         <div className='o-spacing-bottom'>
           <img src={ holiday.mainImageUrl } />
+        </div>
+
+        <div className='o-spacing-bottom'>
+          <InputWithLabelPresentation
+            label={ 'Holiday description' }>
+            <TextAreaPresentation value={ holiday.description }
+              onChange={ (newValue) => (
+                holidayDescriptionChanged(holiday._id, newValue)
+              ) }/>
+          </InputWithLabelPresentation>
         </div>
 
         <div className='o-spacing-bottom'>

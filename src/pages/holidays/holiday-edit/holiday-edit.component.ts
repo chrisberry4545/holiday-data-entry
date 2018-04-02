@@ -64,6 +64,17 @@ const mapDispatchToProps = (
         newCountryId,
       ));
     },
+    holidayDescriptionChanged: (
+      holidayId: string,
+      newHolidayDescription: string,
+    ) => {
+      dispatch(updateHolidayData(
+        holidayId,
+        {
+          description: newHolidayDescription,
+        } as HolidayInterface,
+      ));
+    },
     holidayFlightCostChange: (holidayId: string, newFlightCost: number) => {
       dispatch(updateHolidayData(
         holidayId,

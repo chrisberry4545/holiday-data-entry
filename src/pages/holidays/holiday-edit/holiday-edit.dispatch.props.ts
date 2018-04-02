@@ -8,6 +8,10 @@ export interface HolidayEditDispatchProps {
     holidayId: string,
     newMainImageUrl: string,
   ) => void;
+  holidayDescriptionChanged: (
+    holidayId: string,
+    newHolidayDescription: string,
+  ) => void;
   holidayCountryChange: (
     holidayId: string,
     newCountryId: string,
