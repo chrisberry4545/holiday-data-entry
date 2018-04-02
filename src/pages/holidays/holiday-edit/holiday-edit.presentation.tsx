@@ -9,6 +9,7 @@ import {
 
 import {
   SelectBoxPresentation,
+  TextAreaPresentation,
   TextBoxPresentation,
 } from './../../../elements';
 
@@ -149,7 +150,7 @@ export const HolidayEditPresentation: React.SFC<
             <div className='o-spacing-bottom'>
               <InputWithLabelPresentation
                 label={ 'Highlight description' }>
-                <TextBoxPresentation value={ highlight.description }
+                <TextAreaPresentation value={ highlight.description }
                   onChange={ (newValue) => (
                     onHolidayHighlightDescriptionChanged(
                       holiday._id, highlight._id, newValue,
