@@ -13,7 +13,7 @@ import { push } from 'react-router-redux';
 
 import {
   Action,
-  addNewHolidayThunk,
+  goToAddHolidayThunk,
 } from './../../../store';
 
 import {
@@ -40,7 +40,7 @@ const mapDispatchToProps = (
 ): HolidayListDispatchProps => {
   return {
     addNewHoliday: () => {
-      dispatch(addNewHolidayThunk() as any);
+      dispatch(goToAddHolidayThunk() as any);
     },
     goToHolidayDetails: (holiday: HolidayInterface) => {
       dispatch(push(`/${URLS.HOLIDAY_DETAILS}/${holiday._id}`));

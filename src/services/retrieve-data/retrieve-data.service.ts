@@ -28,8 +28,9 @@ export class RetrieveDataService {
     });
   }
 
-  public createNewHoliday() {
+  public createNewHoliday(holiday: HolidayInterface) {
     return fetch(backendUrl, {
+      body: JSON.stringify(holiday),
       headers: getJSONHeaders(),
       method: 'POST',
     });

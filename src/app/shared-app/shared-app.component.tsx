@@ -26,6 +26,7 @@ import {
 } from './../../models';
 
 import {
+  HolidayCreateComponent,
   HolidayDetailsComponent,
   HolidayEditComponent,
   HolidayListComponent,
@@ -91,6 +92,8 @@ extends Component<Props<{}>, SharedAppStateInterface> {
                     component={ HolidayDetailsComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_EDIT}/:id` }
                     component={ HolidayEditComponent } />
+                  <Route exact path={ `/${URLS.HOLIDAYS_CREATE}/:id` }
+                    component={ HolidayCreateComponent } />
                 </Switch>
               </section>
             ) } />

@@ -1,11 +1,17 @@
-import * as uuidv1 from 'uuid/v1';
+import * as uuidv4 from 'uuid/v4';
+
+import {
+  HolidayInterface,
+} from '@chrisb-dev/holiday-shared-models';
 
 import {
   Action,
   ADD_BLANK_HOLIDAY_ACTIVITY,
   ADD_BLANK_HOLIDAY_HIGHLIGHT,
+  ADD_NEW_HOLIDAY_LOCALLY,
   AddBlankHolidayActivityAction,
   AddBlankHolidayHighlightAction,
+  AddNewHolidayLocallyAction,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
   UPDATE_HOLIDAY_DATA,
@@ -39,6 +45,20 @@ export function dataReducer(
   state = getDefaultState(), action: Action,
 ): AllDataInterface {
   switch (action.type) {
+    case ADD_NEW_HOLIDAY_LOCALLY:
+      return {
+        ...state,
+        holidays: [
+          ...state.holidays,
+          {
+            _id: (action as AddNewHolidayLocallyAction).holidayId,
+            activities: [],
+            flight: {},
+            highlights: [],
+            name: 'Untitled',
+          } as HolidayInterface,
+        ],
+      };
     case UPDATE_HOLIDAY_DATA:
       const updateHolidayDataAction = action as UpdateHolidayDataAction;
       return {
@@ -106,7 +126,7 @@ export function dataReducer(
             activities: [
               ...holiday.activities,
               {
-                _id: uuidv1(),
+                _id: uuidv4(),
                 name: '',
               },
             ],
@@ -128,7 +148,7 @@ export function dataReducer(
               highlights: [
                 ...holiday.highlights,
                 {
-                  _id: uuidv1(),
+                  _id: uuidv4(),
                   title: '',
                 },
               ],

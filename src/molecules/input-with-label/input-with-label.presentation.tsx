@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as uuidv1 from 'uuid/v1';
+import * as uuidv4 from 'uuid/v4';
 
 import './input-with-label.scss';
 
@@ -10,7 +10,7 @@ import {
 
 export const InputWithLabelPresentation: React.SFC<InputWithLabelStateProps>
 = ({ label, children }) => {
-    const elementId = uuidv1();
+    const elementId = uuidv4();
     const childrenWithId = {
       ...children as any,
       props: {

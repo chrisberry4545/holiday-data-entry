@@ -2,6 +2,8 @@ import { ThunkAction } from 'redux-thunk';
 
 import { push } from 'react-router-redux';
 
+import * as uuidv4 from 'uuid/v4';
+
 import {
   ActionCreator,
   Dispatch,
@@ -9,6 +11,7 @@ import {
 
 import {
   Action,
+  addNewHolidayLocally,
 } from './../../store/';
 
 import {
@@ -16,11 +19,7 @@ import {
   URLS,
 } from './../../models';
 
-import {
-  RetrieveDataService,
-} from './../../services';
-
-export const addNewHolidayThunk: ActionCreator<
+export const goToAddHolidayThunk: ActionCreator<
 ThunkAction<Promise<Action>, StateInterface, void>
 > = (
   holidayId: string,
@@ -28,12 +27,8 @@ ThunkAction<Promise<Action>, StateInterface, void>
   return (
     dispatch: Dispatch<StateInterface>, getState,
   ): Promise<Action> => {
-    const holidayToSave =
-      getState().main.data.holidays
-      .find((holiday) => holiday._id === holidayId);
-    const retrieveDataService = new RetrieveDataService();
-    return retrieveDataService.createNewHoliday(holidayToSave).then(() => {
-      return dispatch(push(`/${URLS.HOLIDAYS_LIST}`));
-    });
+    const id = uuidv4();
+    dispatch(addNewHolidayLocally(id));
+    return dispatch(push(`${URLS.HOLIDAYS_CREATE}/${id}`));
   };
 };
