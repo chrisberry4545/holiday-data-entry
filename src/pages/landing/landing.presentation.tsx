@@ -5,11 +5,11 @@ import {
   LandingStateProps,
 } from './';
 
-interface HolidayCreateCombinedProps
+interface LandingCombinedProps
   extends LandingStateProps, LandingDispatchProps {}
 
 export const LandingPresentation: React.SFC<
-  HolidayCreateCombinedProps
+  LandingCombinedProps
 > = ({
   goToCountriesList, goToHolidaysList,
 }) => {

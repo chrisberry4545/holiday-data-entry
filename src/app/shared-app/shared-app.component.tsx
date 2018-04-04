@@ -26,6 +26,9 @@ import {
 } from './../../models';
 
 import {
+  CountriesCreateComponent,
+  CountriesEditComponent,
+  CountriesListComponent,
   HolidayCreateComponent,
   HolidayDetailsComponent,
   HolidayEditComponent,
@@ -89,6 +92,14 @@ extends Component<Props<{}>, SharedAppStateInterface> {
                 <Switch location={ location }>
                   <Route exact path={ `/${URLS.LANDING}` }
                     component={ LandingComponent } />
+
+                  <Route exact path={ `/${URLS.COUNTRIES_LIST}` }
+                    component={ CountriesListComponent } />
+                  <Route exact path={ `/${URLS.COUNTRIES_EDIT}/:id` }
+                    component={ CountriesEditComponent } />
+                  <Route exact path={ `/${URLS.COUNTRIES_CREATE}/:id` }
+                    component={ CountriesCreateComponent } />
+
                   <Route exact path={ `/${URLS.HOLIDAYS_LIST}` }
                     component={ HolidayListComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_DETAILS}/:id` }

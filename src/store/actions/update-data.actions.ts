@@ -136,3 +136,16 @@ export function addNewHolidayLocally(
     type: ADD_NEW_HOLIDAY_LOCALLY,
   };
 }
+
+export interface AddNewCountryLocallyAction extends Action {
+  countryId: string;
+}
+export const ADD_NEW_COUNTRY_LOCALLY = 'ADD_NEW_COUNTRY_LOCALLY';
+export function addNewCountryLocally(
+  countryId: string,
+): AddNewCountryLocallyAction {
+  return {
+    countryId,
+    type: ADD_NEW_COUNTRY_LOCALLY,
+  };
+}

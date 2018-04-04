@@ -36,3 +36,20 @@ ThunkAction<Promise<Action>, StateInterface, void>
     });
   };
 };
+
+export const saveCountryDataThunk: ActionCreator<
+ThunkAction<Promise<Action>, StateInterface, void>
+> = (
+  countryId: string,
+) => {
+  return (
+    dispatch: Dispatch<StateInterface>, getState,
+  ): Promise<Action> => {
+    const retrieveDataService = new RetrieveDataService();
+    const countryToSave = getState().main.data
+      .countries.find((country) => country._id === countryId);
+    return retrieveDataService.saveCountryData(countryToSave).then(() => {
+      return dispatch(push(`/${URLS.COUNTRIES_LIST}`));
+    });
+  };
+};
