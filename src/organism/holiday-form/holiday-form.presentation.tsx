@@ -75,7 +75,9 @@ export const HolidayFormPresentation: React.SFC<
               value: country._id,
             })) } onChange={ (newValue: string) => holidayCountryChange(
               holiday._id, newValue,
-            ) }/>
+            ) }
+              selectedValue={ holiday.country._id }
+            />
           </InputWithLabelPresentation>
         </div>
 
@@ -99,11 +101,13 @@ export const HolidayFormPresentation: React.SFC<
           <InputWithLabelPresentation
             label={ 'Flight time' }>
             <SelectBoxPresentation options={ allFlights.map((flight) => ({
-              label: flight.name,
-              value: flight._id,
-            })) } onChange={ (newValue) => holidayFlightTimeChange(
-              holiday._id, newValue,
-            ) }/>
+                label: flight.name,
+                value: flight._id,
+              })) } onChange={ (newValue) => holidayFlightTimeChange(
+                holiday._id, newValue,
+              ) }
+              selectedValue={ holiday.flight._id }
+            />
           </InputWithLabelPresentation>
         </div>
       </section>
@@ -112,7 +116,8 @@ export const HolidayFormPresentation: React.SFC<
         <h3>Activities</h3>
 
         { holiday.activities.map((activity, activityIndex) => (
-          <div className='o-spacing-bottom' key={ activity._id }>
+          <div className='o-spacing-bottom'
+            key={ `${activity._id}${activityIndex}` }>
             <InputWithLabelPresentation
               label={ `Activity ${activityIndex + 1}` }>
               <SelectBoxPresentation options={
@@ -125,7 +130,9 @@ export const HolidayFormPresentation: React.SFC<
                   onHolidayActivityChanged(
                     holiday._id, activityIndex, newValue,
                   )
-                ) }/>
+                ) }
+                selectedValue={ activity._id }
+                />
             </InputWithLabelPresentation>
           </div>
         )) }

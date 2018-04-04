@@ -4,4 +4,5 @@ export interface SelectBoxStateProps {
     label: string;
     value: string;
   }>;
+  selectedValue: string;
 }
