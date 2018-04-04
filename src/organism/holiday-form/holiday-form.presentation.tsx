@@ -112,9 +112,8 @@ export const HolidayFormPresentation: React.SFC<
         <h3>Activities</h3>
 
         { holiday.activities.map((activity, activityIndex) => (
-          <div className='o-spacing-bottom'>
+          <div className='o-spacing-bottom' key={ activity._id }>
             <InputWithLabelPresentation
-              key={ activity._id }
               label={ `Activity ${activityIndex + 1}` }>
               <SelectBoxPresentation options={
                   allActivities.map((activityCategory) => ({
