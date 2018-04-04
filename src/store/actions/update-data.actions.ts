@@ -115,11 +115,24 @@ export function updateHolidayHighlight(
   holidayId: string,
   highlightId: string,
   newHighlightData: HolidayHighlightInterface,
-) {
+): UpdateHolidayHighlightAction {
   return {
     highlightId,
     holidayId,
     newHighlightData,
     type: UPDATE_HOLIDAY_HIGHLIGHT,
+  };
+}
+
+export interface AddNewHolidayLocallyAction extends Action {
+  holidayId: string;
+}
+export const ADD_NEW_HOLIDAY_LOCALLY = 'ADD_NEW_HOLIDAY_LOCALLY';
+export function addNewHolidayLocally(
+  holidayId: string,
+): AddNewHolidayLocallyAction {
+  return {
+    holidayId,
+    type: ADD_NEW_HOLIDAY_LOCALLY,
   };
 }

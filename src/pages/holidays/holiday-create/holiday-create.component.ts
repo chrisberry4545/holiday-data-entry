@@ -9,13 +9,13 @@ import { push } from 'react-router-redux';
 
 import {
   Action,
-  saveHolidayDataThunk,
+  addNewHolidayThunk,
 } from './../../../store';
 
 import {
-  HolidayEditDispatchProps,
-  HolidayEditPresentation,
-  HolidayEditStateProps,
+  HolidayCreateDispatchProps,
+  HolidayCreatePresentation,
+  HolidayCreateStateProps,
 } from './';
 
 import {
@@ -26,9 +26,13 @@ import {
   getIdFromState,
 } from './../../../helpers';
 
+import {
+  HolidayInterface,
+} from '@chrisb-dev/holiday-shared-models';
+
 const mapStateToProps = (
   state: StateInterface,
-): HolidayEditStateProps => {
+): HolidayCreateStateProps => {
   return {
     holiday: state.main.data.holidays.find((holiday) => (
       holiday._id === getIdFromState(state)
@@ -39,19 +43,17 @@ const mapStateToProps = (
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>,
   test,
-): HolidayEditDispatchProps => {
+): HolidayCreateDispatchProps => {
   return {
-    saveData: (holidayId: string) => {
+    createHoliday: (holidayId: string) => {
       dispatch(
-        saveHolidayDataThunk(
-          holidayId,
-        ) as any,
+        addNewHolidayThunk(holidayId) as any,
       );
     },
   };
 };
 
-export const HolidayEditComponent = connect(
+export const HolidayCreateComponent = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(HolidayEditPresentation);
+)(HolidayCreatePresentation);
