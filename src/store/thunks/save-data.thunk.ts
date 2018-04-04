@@ -1,5 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 
+import { push } from 'react-router-redux';
+
 import {
   ActionCreator,
   Dispatch,
@@ -11,6 +13,7 @@ import {
 
 import {
   StateInterface,
+  URLS,
 } from './../../models';
 
 import {
@@ -28,6 +31,8 @@ ThunkAction<Promise<Action>, StateInterface, void>
     const retrieveDataService = new RetrieveDataService();
     const holidayToSave = getState().main.data
       .holidays.find((holiday) => holiday._id === holidayId);
-    return retrieveDataService.saveHolidayData(holidayToSave);
+    return retrieveDataService.saveHolidayData(holidayToSave).then(() => {
+      return dispatch(push(`/${URLS.HOLIDAYS_LIST}`));
+    });
   };
 };

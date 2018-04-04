@@ -41,7 +41,7 @@ const mapDispatchToProps = (
   test,
 ): HolidayEditDispatchProps => {
   return {
-    saveData: (holidayId: string) => {
+    updateData: (holidayId: string) => {
       dispatch(
         saveHolidayDataThunk(
           holidayId,

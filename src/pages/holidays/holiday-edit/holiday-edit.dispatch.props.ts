@@ -1,3 +1,3 @@
 export interface HolidayEditDispatchProps {
-  saveData: (holidayId: string) => void;
+  updateData: (holidayId: string) => void;
 }

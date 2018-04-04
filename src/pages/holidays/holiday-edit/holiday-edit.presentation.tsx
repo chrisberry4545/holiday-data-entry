@@ -18,7 +18,7 @@ export const HolidayEditPresentation: React.SFC<
   HolidayEditCombinedProps
 > = ({
   holiday,
-  saveData,
+  updateData,
 }) => {
   return holiday ? (
     <div className='o-container c-holiday-edit'>
@@ -26,8 +26,8 @@ export const HolidayEditPresentation: React.SFC<
 
       <HolidayFormComponent holiday={ holiday }/>
 
-      <button onClick={ () => saveData(holiday._id) }>
-        Save
+      <button onClick={ () => updateData(holiday._id) }>
+        Update
       </button>
     </div>
   ) : <div>No holiday with this id</div>;
