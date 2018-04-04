@@ -30,6 +30,7 @@ import {
   HolidayDetailsComponent,
   HolidayEditComponent,
   HolidayListComponent,
+  LandingComponent,
 } from './../../pages';
 
 import {
@@ -86,9 +87,11 @@ extends Component<Props<{}>, SharedAppStateInterface> {
             <Route render={ ({ location }) => (
               <section>
                 <Switch location={ location }>
+                  <Route exact path={ `/${URLS.LANDING}` }
+                    component={ LandingComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_LIST}` }
                     component={ HolidayListComponent } />
-                  <Route exact path={ `/${URLS.HOLIDAY_DETAILS}/:id` }
+                  <Route exact path={ `/${URLS.HOLIDAYS_DETAILS}/:id` }
                     component={ HolidayDetailsComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_EDIT}/:id` }
                     component={ HolidayEditComponent } />
