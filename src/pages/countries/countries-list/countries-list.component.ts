@@ -9,7 +9,7 @@ import { push } from 'react-router-redux';
 
 import {
   Action,
-  addNewCountryThunk,
+  goToAddCountryThunk,
 } from './../../../store';
 
 import {
@@ -36,7 +36,7 @@ const mapDispatchToProps = (
 ): CountriesListDispatchProps => {
   return {
     addNewCountry: () => {
-      dispatch(addNewCountryThunk() as any);
+      dispatch(goToAddCountryThunk() as any);
     },
     goToCountryEdit: (countryId: string) => {
       dispatch(push(`/${URLS.COUNTRIES_EDIT}/${countryId}`));

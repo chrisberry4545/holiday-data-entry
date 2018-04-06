@@ -24,13 +24,42 @@ import {
 const mapStateToProps = (
   state: StateInterface,
 ): CountryFormStateProps => {
-  return {};
+  return {
+    allContinents: state.main.data.continents,
+    allTemperatures: state.main.data.temperature,
+  };
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>,
 ): CountryFormDispatchProps => {
-  return {};
+  return {
+    onCountryContinentChanged: (
+      countryId: string,
+      newContinentId: string,
+    ) => {
+      return null;
+    },
+    onCountryFoodScoreChanged: (
+      countryId: string,
+      newFoodScore: number,
+    ) => {
+      return null;
+    },
+    onCountryMonthlyTemperatureChanged: (
+      countryId: string,
+      monthIndex: string,
+      newTemperatureId: string,
+    ) => {
+      return null;
+    },
+    onCountryNameChanged: (
+      countryId: string,
+      newName: string,
+    ) => {
+      return null;
+    },
+  };
 };
 
 export const CountryFormComponent = connect(

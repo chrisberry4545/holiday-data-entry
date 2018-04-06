@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './countries-create.scss';
+
 import {
   CountriesCreateDispatchProps,
   CountriesCreateStateProps,
@@ -19,7 +21,7 @@ export const CountriesCreatePresentation: React.SFC<
   createCountry,
 }) => {
   return (
-    <div className='o-container'>
+    <div className='o-container c-countries-create'>
       <h1>Countries create</h1>
 
       <CountryFormComponent country={ country } />

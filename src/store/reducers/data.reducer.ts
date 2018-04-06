@@ -1,6 +1,7 @@
 import * as uuidv4 from 'uuid/v4';
 
 import {
+  CountryInterface,
   HolidayInterface,
 } from '@chrisb-dev/holiday-shared-models';
 
@@ -8,9 +9,11 @@ import {
   Action,
   ADD_BLANK_HOLIDAY_ACTIVITY,
   ADD_BLANK_HOLIDAY_HIGHLIGHT,
+  ADD_NEW_COUNTRY_LOCALLY,
   ADD_NEW_HOLIDAY_LOCALLY,
   AddBlankHolidayActivityAction,
   AddBlankHolidayHighlightAction,
+  AddNewCountryLocallyAction,
   AddNewHolidayLocallyAction,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
@@ -45,6 +48,37 @@ export function dataReducer(
   state = getDefaultState(), action: Action,
 ): AllDataInterface {
   switch (action.type) {
+    case ADD_NEW_COUNTRY_LOCALLY:
+      return {
+        ...state,
+        countries: [
+          ...state.countries,
+          {
+            _id: (action as AddNewCountryLocallyAction).countryId,
+            continent: {
+              _id: undefined,
+              name: undefined,
+            },
+            foodScore: 5,
+            foodTypes: [],
+            monthlyTemperatures: {
+              0: undefined,
+              1: undefined,
+              2: undefined,
+              3: undefined,
+              4: undefined,
+              5: undefined,
+              6: undefined,
+              7: undefined,
+              8: undefined,
+              9: undefined,
+              10: undefined,
+              11: undefined,
+            },
+            name: 'Untitled',
+          },
+        ],
+      };
     case ADD_NEW_HOLIDAY_LOCALLY:
       return {
         ...state,

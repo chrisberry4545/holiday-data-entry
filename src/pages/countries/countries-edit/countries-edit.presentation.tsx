@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './countries-edit.scss';
+
 import {
   CountriesEditDispatchProps,
   CountriesEditStateProps,
@@ -19,7 +21,7 @@ export const CountriesEditPresentation: React.SFC<
   updateData,
 }) => {
   return (
-    <div className='o-container'>
+    <div className='o-container c-countries-edit'>
       <h1>Countries edit</h1>
 
       <CountryFormComponent country={ country } />

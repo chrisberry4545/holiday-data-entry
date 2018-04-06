@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './holiday-form.scss';
-
 import {
   HolidayFormDispatchProps,
   HolidayFormStateProps,
@@ -32,8 +30,8 @@ export const HolidayFormPresentation: React.SFC<
   onHolidayHighlightImageUrlChanged, onHolidayHighlightTitleChanged,
 }) => {
   return holiday ? (
-    <div className='c-holiday-form'>
-      <section className='c-holiday-form__section'>
+    <div>
+      <section className='o-form-section'>
         <div className='o-spacing-bottom'>
           <InputWithLabelPresentation
             label={ 'Holiday name' }>
@@ -83,7 +81,7 @@ export const HolidayFormPresentation: React.SFC<
 
       </section>
 
-      <section className='c-holiday-form__section'>
+      <section className='o-form-section'>
         <h3>Flights</h3>
 
         <div className='o-spacing-bottom'>
@@ -112,7 +110,7 @@ export const HolidayFormPresentation: React.SFC<
         </div>
       </section>
 
-      <section className='c-holiday-form__section'>
+      <section className='o-form-section'>
         <h3>Activities</h3>
 
         { holiday.activities.map((activity, activityIndex) => (
@@ -144,11 +142,11 @@ export const HolidayFormPresentation: React.SFC<
 
       </section>
 
-      <section className='c-holiday-form__section'>
+      <section className='o-form-section'>
         <h3>Highlights</h3>
 
         { holiday.highlights.map((highlight, highlightIndex) => (
-          <div key={ highlight._id } className='c-holiday-form__sub-section'>
+          <div key={ highlight._id } className='o-form-subsection'>
             <h4>{ `Highlight ${highlightIndex + 1}` }</h4>
             <div className='o-spacing-bottom'>
               <InputWithLabelPresentation
