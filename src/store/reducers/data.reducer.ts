@@ -1,6 +1,7 @@
 import * as uuidv4 from 'uuid/v4';
 
 import {
+  CountryInterface,
   HolidayInterface,
 } from '@chrisb-dev/holiday-shared-models';
 
@@ -8,15 +9,23 @@ import {
   Action,
   ADD_BLANK_HOLIDAY_ACTIVITY,
   ADD_BLANK_HOLIDAY_HIGHLIGHT,
+  ADD_NEW_COUNTRY_LOCALLY,
   ADD_NEW_HOLIDAY_LOCALLY,
   AddBlankHolidayActivityAction,
   AddBlankHolidayHighlightAction,
+  AddNewCountryLocallyAction,
   AddNewHolidayLocallyAction,
+  UPDATE_COUNTRY_CONTINENT,
+  UPDATE_COUNTRY_DATA,
+  UPDATE_COUNTRY_TEMPERATURE,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
   UPDATE_HOLIDAY_DATA,
   UPDATE_HOLIDAY_FLIGHT_TIME,
   UPDATE_HOLIDAY_HIGHLIGHT,
+  UpdateCountryContinentAction,
+  UpdateCountryDataAction,
+  UpdateCountryTemperature,
   UpdateHolidayActivityAction,
   UpdateHolidayCountryAction,
   UpdateHolidayDataAction,
@@ -45,6 +54,73 @@ export function dataReducer(
   state = getDefaultState(), action: Action,
 ): AllDataInterface {
   switch (action.type) {
+    case ADD_NEW_COUNTRY_LOCALLY:
+      return {
+        ...state,
+        countries: [
+          ...state.countries,
+          {
+            _id: (action as AddNewCountryLocallyAction).countryId,
+            continent: {
+              _id: undefined,
+              name: undefined,
+            },
+            foodScore: 5,
+            foodTypes: [],
+            monthlyTemperatures: {
+              0: {
+                _id: undefined,
+                name: undefined,
+              },
+              1: {
+                _id: undefined,
+                name: undefined,
+              },
+              2: {
+                _id: undefined,
+                name: undefined,
+              },
+              3: {
+                _id: undefined,
+                name: undefined,
+              },
+              4: {
+                _id: undefined,
+                name: undefined,
+              },
+              5: {
+                _id: undefined,
+                name: undefined,
+              },
+              6: {
+                _id: undefined,
+                name: undefined,
+              },
+              7: {
+                _id: undefined,
+                name: undefined,
+              },
+              8: {
+                _id: undefined,
+                name: undefined,
+              },
+              9: {
+                _id: undefined,
+                name: undefined,
+              },
+              10: {
+                _id: undefined,
+                name: undefined,
+              },
+              11: {
+                _id: undefined,
+                name: undefined,
+              },
+            },
+            name: 'Untitled',
+          },
+        ],
+      };
     case ADD_NEW_HOLIDAY_LOCALLY:
       return {
         ...state,
@@ -208,6 +284,67 @@ export function dataReducer(
           holiday
         )),
       };
+
+    case UPDATE_COUNTRY_DATA:
+      const updateCountryDataAction = action as UpdateCountryDataAction;
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryDataAction.countryId
+          ?
+          {
+            ...country,
+            ...updateCountryDataAction.newData,
+          }
+          :
+          country
+        )),
+      };
+    case UPDATE_COUNTRY_CONTINENT:
+      const updateCountryContinentAction =
+        action as UpdateCountryContinentAction;
+      const newCountryContinent = state.continents.find((continent) => (
+        continent._id === updateCountryContinentAction.newContinentId
+      ));
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryContinentAction.countryId
+          ?
+          {
+            ...country,
+            continent: newCountryContinent,
+          }
+          :
+          country
+        )),
+      };
+    case UPDATE_COUNTRY_TEMPERATURE:
+      const updateCountryTemperatureAction =
+        action as UpdateCountryTemperature;
+      const newCountryTemperature = state.temperature.find((temperature) => (
+        temperature._id === updateCountryTemperatureAction.newTemperatureId
+      ));
+      const newMonthlyTemperature = {
+        [updateCountryTemperatureAction.temperatureMonthIndex]:
+          newCountryTemperature,
+      };
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryTemperatureAction.countryId
+          ?
+          {
+            ...country,
+            monthlyTemperatures: {
+              ...country.monthlyTemperatures,
+              ...newMonthlyTemperature,
+            },
+          }
+          :
+          country
+        )),
+    };
 
     default:
       return state;

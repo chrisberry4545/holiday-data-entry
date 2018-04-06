@@ -26,11 +26,19 @@ import {
 } from './../../models';
 
 import {
+  CountriesCreateComponent,
+  CountriesEditComponent,
+  CountriesListComponent,
   HolidayCreateComponent,
   HolidayDetailsComponent,
   HolidayEditComponent,
   HolidayListComponent,
+  LandingComponent,
 } from './../../pages';
+
+import {
+  NavComponent,
+} from './../../organism/nav';
 
 import {
   reducer,
@@ -82,13 +90,24 @@ extends Component<Props<{}>, SharedAppStateInterface> {
     return this.state.store ? (
       <Provider store={ this.state.store }>
         <div>
+          <NavComponent />
           <ConnectedRouter history={ history }>
             <Route render={ ({ location }) => (
               <section>
                 <Switch location={ location }>
+                  <Route exact path={ `/${URLS.LANDING}` }
+                    component={ LandingComponent } />
+
+                  <Route exact path={ `/${URLS.COUNTRIES_LIST}` }
+                    component={ CountriesListComponent } />
+                  <Route exact path={ `/${URLS.COUNTRIES_EDIT}/:id` }
+                    component={ CountriesEditComponent } />
+                  <Route exact path={ `/${URLS.COUNTRIES_CREATE}/:id` }
+                    component={ CountriesCreateComponent } />
+
                   <Route exact path={ `/${URLS.HOLIDAYS_LIST}` }
                     component={ HolidayListComponent } />
-                  <Route exact path={ `/${URLS.HOLIDAY_DETAILS}/:id` }
+                  <Route exact path={ `/${URLS.HOLIDAYS_DETAILS}/:id` }
                     component={ HolidayDetailsComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_EDIT}/:id` }
                     component={ HolidayEditComponent } />

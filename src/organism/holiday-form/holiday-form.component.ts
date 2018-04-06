@@ -77,7 +77,7 @@ const mapDispatchToProps = (
         holidayId,
         {
           flight: {
-            cost: newFlightCost,
+            cost: isNaN(newFlightCost) ? 0 : newFlightCost,
           },
         } as HolidayInterface,
       ));

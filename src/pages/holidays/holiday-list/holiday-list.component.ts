@@ -43,7 +43,7 @@ const mapDispatchToProps = (
       dispatch(goToAddHolidayThunk() as any);
     },
     goToHolidayDetails: (holiday: HolidayInterface) => {
-      dispatch(push(`/${URLS.HOLIDAY_DETAILS}/${holiday._id}`));
+      dispatch(push(`/${URLS.HOLIDAYS_DETAILS}/${holiday._id}`));
     },
     goToHolidayEdit: (holiday: HolidayInterface) => {
       dispatch(push(`/${URLS.HOLIDAYS_EDIT}/${holiday._id}`));

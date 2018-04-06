@@ -1,4 +1,5 @@
 import {
+  CountryInterface,
   HolidayInterface,
 } from '@chrisb-dev/holiday-shared-models';
 
@@ -7,6 +8,7 @@ import {
 } from './../../models';
 
 const backendUrl = `process.env.BACKEND_URLdata`;
+const backendCountryUrl = `${backendUrl}/country`;
 
 const getJSONHeaders = () => ({
   'Accept': 'application/json',
@@ -31,6 +33,22 @@ export class RetrieveDataService {
   public createNewHoliday(holiday: HolidayInterface) {
     return fetch(backendUrl, {
       body: JSON.stringify(holiday),
+      headers: getJSONHeaders(),
+      method: 'POST',
+    });
+  }
+
+  public saveCountryData(country: CountryInterface) {
+    return fetch(backendCountryUrl, {
+      body: JSON.stringify(country),
+      headers: getJSONHeaders(),
+      method: 'PATCH',
+    });
+  }
+
+  public createNewCountry(country: CountryInterface) {
+    return fetch(backendCountryUrl, {
+      body: JSON.stringify(country),
       headers: getJSONHeaders(),
       method: 'POST',
     });
