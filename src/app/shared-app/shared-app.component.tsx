@@ -37,6 +37,10 @@ import {
 } from './../../pages';
 
 import {
+  NavComponent,
+} from './../../organism/nav';
+
+import {
   reducer,
 } from './../../store';
 
@@ -86,6 +90,7 @@ extends Component<Props<{}>, SharedAppStateInterface> {
     return this.state.store ? (
       <Provider store={ this.state.store }>
         <div>
+          <NavComponent />
           <ConnectedRouter history={ history }>
             <Route render={ ({ location }) => (
               <section>

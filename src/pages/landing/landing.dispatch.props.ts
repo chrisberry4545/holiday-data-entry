@@ -1,4 +1,1 @@
-export interface LandingDispatchProps {
-  goToCountriesList: () => void;
-  goToHolidaysList: () => void;
-}
+export interface LandingDispatchProps {}

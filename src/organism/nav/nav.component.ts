@@ -12,9 +12,9 @@ import {
 } from './../../store';
 
 import {
-  LandingDispatchProps,
-  LandingPresentation,
-  LandingStateProps,
+  NavDispatchProps,
+  NavPresentation,
+  NavStateProps,
 } from './';
 
 import {
@@ -22,19 +22,31 @@ import {
   URLS,
 } from './../../models';
 
+import {
+  getIdFromState,
+} from './../../helpers';
+
 const mapStateToProps = (
   state: StateInterface,
-): LandingStateProps => {
+): NavStateProps => {
   return {};
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>,
-): LandingDispatchProps => {
-  return {};
+  test,
+): NavDispatchProps => {
+  return {
+    goToCountriesList: () => {
+      dispatch(push(`/${URLS.COUNTRIES_LIST}`));
+    },
+    goToHolidaysList: () => {
+      dispatch(push(`/${URLS.HOLIDAYS_LIST}`));
+    },
+  };
 };
 
-export const LandingComponent = connect(
+export const NavComponent = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LandingPresentation);
+)(NavPresentation);
