@@ -9,7 +9,7 @@ export interface CountryFormDispatchProps {
   ) => void;
   onCountryMonthlyTemperatureChanged: (
     countryId: string,
-    monthIndex: string,
+    monthIndex: number,
     newTemperatureId: string,
   ) => void;
   onCountryNameChanged: (

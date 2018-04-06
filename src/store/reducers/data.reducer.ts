@@ -15,11 +15,17 @@ import {
   AddBlankHolidayHighlightAction,
   AddNewCountryLocallyAction,
   AddNewHolidayLocallyAction,
+  UPDATE_COUNTRY_CONTINENT,
+  UPDATE_COUNTRY_DATA,
+  UPDATE_COUNTRY_TEMPERATURE,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
   UPDATE_HOLIDAY_DATA,
   UPDATE_HOLIDAY_FLIGHT_TIME,
   UPDATE_HOLIDAY_HIGHLIGHT,
+  UpdateCountryContinentAction,
+  UpdateCountryDataAction,
+  UpdateCountryTemperature,
   UpdateHolidayActivityAction,
   UpdateHolidayCountryAction,
   UpdateHolidayDataAction,
@@ -62,18 +68,54 @@ export function dataReducer(
             foodScore: 5,
             foodTypes: [],
             monthlyTemperatures: {
-              0: undefined,
-              1: undefined,
-              2: undefined,
-              3: undefined,
-              4: undefined,
-              5: undefined,
-              6: undefined,
-              7: undefined,
-              8: undefined,
-              9: undefined,
-              10: undefined,
-              11: undefined,
+              0: {
+                _id: undefined,
+                name: undefined,
+              },
+              1: {
+                _id: undefined,
+                name: undefined,
+              },
+              2: {
+                _id: undefined,
+                name: undefined,
+              },
+              3: {
+                _id: undefined,
+                name: undefined,
+              },
+              4: {
+                _id: undefined,
+                name: undefined,
+              },
+              5: {
+                _id: undefined,
+                name: undefined,
+              },
+              6: {
+                _id: undefined,
+                name: undefined,
+              },
+              7: {
+                _id: undefined,
+                name: undefined,
+              },
+              8: {
+                _id: undefined,
+                name: undefined,
+              },
+              9: {
+                _id: undefined,
+                name: undefined,
+              },
+              10: {
+                _id: undefined,
+                name: undefined,
+              },
+              11: {
+                _id: undefined,
+                name: undefined,
+              },
             },
             name: 'Untitled',
           },
@@ -242,6 +284,67 @@ export function dataReducer(
           holiday
         )),
       };
+
+    case UPDATE_COUNTRY_DATA:
+      const updateCountryDataAction = action as UpdateCountryDataAction;
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryDataAction.countryId
+          ?
+          {
+            ...country,
+            ...updateCountryDataAction.newData,
+          }
+          :
+          country
+        )),
+      };
+    case UPDATE_COUNTRY_CONTINENT:
+      const updateCountryContinentAction =
+        action as UpdateCountryContinentAction;
+      const newCountryContinent = state.continents.find((continent) => (
+        continent._id === updateCountryContinentAction.newContinentId
+      ));
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryContinentAction.countryId
+          ?
+          {
+            ...country,
+            continent: newCountryContinent,
+          }
+          :
+          country
+        )),
+      };
+    case UPDATE_COUNTRY_TEMPERATURE:
+      const updateCountryTemperatureAction =
+        action as UpdateCountryTemperature;
+      const newCountryTemperature = state.temperature.find((temperature) => (
+        temperature._id === updateCountryTemperatureAction.newTemperatureId
+      ));
+      const newMonthlyTemperature = {
+        [updateCountryTemperatureAction.temperatureMonthIndex]:
+          newCountryTemperature,
+      };
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryTemperatureAction.countryId
+          ?
+          {
+            ...country,
+            monthlyTemperatures: {
+              ...country.monthlyTemperatures,
+              ...newMonthlyTemperature,
+            },
+          }
+          :
+          country
+        )),
+    };
 
     default:
       return state;

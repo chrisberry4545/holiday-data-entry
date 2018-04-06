@@ -61,7 +61,7 @@ export const CountryFormPresentation: React.SFC<
 
         <div className='o-spacing-bottom'>
           <InputWithLabelPresentation label={ 'Food score' }>
-            <TextBoxPresentation value={ country.name } type='number'
+            <TextBoxPresentation value={ country.foodScore } type='number'
               onChange={ (newFoodScore) => (
                 onCountryFoodScoreChanged(
                   country._id, parseInt(newFoodScore, 10),
@@ -90,10 +90,10 @@ export const CountryFormPresentation: React.SFC<
                   })) }
                   onChange={
                     (newTemperatureId) => onCountryMonthlyTemperatureChanged(
-                      country._id, monthIndex, newTemperatureId,
+                      country._id, parseInt(monthIndex, 10), newTemperatureId,
                     )
                   }
-                  selectedValue={ country.continent._id }
+                  selectedValue={ country.monthlyTemperatures[monthIndex]._id }
                 />
               </InputWithLabelPresentation>
             </div>

@@ -2,6 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import {
+  CountryInterface,
+} from '@chrisb-dev/holiday-shared-models';
+
+import {
   Dispatch,
 } from 'redux';
 
@@ -9,6 +13,9 @@ import { push } from 'react-router-redux';
 
 import {
   Action,
+  updateCountryContinent,
+  updateCountryData,
+  updateCountryTemperature,
 } from './../../store';
 
 import {
@@ -38,26 +45,43 @@ const mapDispatchToProps = (
       countryId: string,
       newContinentId: string,
     ) => {
-      return null;
+      dispatch(updateCountryContinent(
+        countryId,
+        newContinentId,
+      ));
     },
     onCountryFoodScoreChanged: (
       countryId: string,
       newFoodScore: number,
     ) => {
-      return null;
+      dispatch(updateCountryData(
+        countryId,
+        {
+          foodScore: isNaN(newFoodScore) ? 0 : newFoodScore,
+        } as CountryInterface,
+      ));
     },
     onCountryMonthlyTemperatureChanged: (
       countryId: string,
-      monthIndex: string,
+      monthIndex: number,
       newTemperatureId: string,
     ) => {
-      return null;
+      dispatch(updateCountryTemperature(
+        countryId,
+        monthIndex,
+        newTemperatureId,
+      ));
     },
     onCountryNameChanged: (
       countryId: string,
       newName: string,
     ) => {
-      return null;
+      dispatch(updateCountryData(
+        countryId,
+        {
+          name: newName,
+        } as CountryInterface,
+      ));
     },
   };
 };
