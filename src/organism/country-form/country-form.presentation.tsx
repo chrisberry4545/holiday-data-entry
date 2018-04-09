@@ -32,6 +32,8 @@ export const CountryFormPresentation: React.SFC<
   onCountryFoodScoreChanged,
   onCountryMonthlyTemperatureChanged,
   onCountryNameChanged,
+  onCountryLatChanged,
+  onCountryLongChanged,
 }) => {
   return country ? (
     <div>
@@ -67,6 +69,22 @@ export const CountryFormPresentation: React.SFC<
                   country._id, parseInt(newFoodScore, 10),
                 )
                 ) }/>
+          </InputWithLabelPresentation>
+        </div>
+
+        <div className='o-spacing-bottom'>
+          <InputWithLabelPresentation label={ 'Latitude' }>
+            <TextBoxPresentation value={ country.latLng.lat }
+              onChange={ (newLatitude) => (
+                onCountryLatChanged(country._id, newLatitude)) }/>
+          </InputWithLabelPresentation>
+        </div>
+
+        <div className='o-spacing-bottom'>
+          <InputWithLabelPresentation label={ 'Longitude' }>
+            <TextBoxPresentation value={ country.latLng.lng }
+              onChange={ (newLongitude) => (
+                onCountryLongChanged(country._id, newLongitude)) }/>
           </InputWithLabelPresentation>
         </div>
 

@@ -15,6 +15,8 @@ import {
   Action,
   updateCountryContinent,
   updateCountryData,
+  updateCountryLat,
+  updateCountryLng,
   updateCountryTemperature,
 } from './../../store';
 
@@ -59,6 +61,24 @@ const mapDispatchToProps = (
         {
           foodScore: isNaN(newFoodScore) ? 0 : newFoodScore,
         } as CountryInterface,
+      ));
+    },
+    onCountryLatChanged: (
+      countryId: string,
+      newLat: string,
+    ) => {
+      dispatch(updateCountryLat(
+        countryId,
+        newLat,
+      ));
+    },
+    onCountryLongChanged: (
+      countryId: string,
+      newLong: string,
+    ) => {
+      dispatch(updateCountryLng(
+        countryId,
+        newLong,
       ));
     },
     onCountryMonthlyTemperatureChanged: (

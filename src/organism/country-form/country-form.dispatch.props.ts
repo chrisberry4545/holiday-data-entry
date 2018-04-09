@@ -7,6 +7,14 @@ export interface CountryFormDispatchProps {
     countryId: string,
     newFoodScore: number,
   ) => void;
+  onCountryLatChanged: (
+    countryId: string,
+    newLat: string,
+  ) => void;
+  onCountryLongChanged: (
+    countryId: string,
+    newLong: string,
+  ) => void;
   onCountryMonthlyTemperatureChanged: (
     countryId: string,
     monthIndex: number,

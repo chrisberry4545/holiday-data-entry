@@ -69,3 +69,35 @@ export function updateCountryTemperature(
     type: UPDATE_COUNTRY_TEMPERATURE,
   };
 }
+
+export interface UpdateCountryLat extends Action {
+  countryId: string;
+  newLat: string;
+}
+export const UPDATE_COUNTRY_LAT = 'UPDATE_COUNTRY_LAT';
+export function updateCountryLat(
+  countryId: string,
+  newLat: string,
+): UpdateCountryLat {
+  return {
+    countryId,
+    newLat,
+    type: UPDATE_COUNTRY_LAT,
+  };
+}
+
+export interface UpdateCountryLng extends Action {
+  countryId: string;
+  newLng: string;
+}
+export const UPDATE_COUNTRY_LNG = 'UPDATE_COUNTRY_LNG';
+export function updateCountryLng(
+  countryId: string,
+  newLng: string,
+): UpdateCountryLng {
+  return {
+    countryId,
+    newLng,
+    type: UPDATE_COUNTRY_LNG,
+  };
+}
