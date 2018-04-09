@@ -17,6 +17,8 @@ import {
   AddNewHolidayLocallyAction,
   UPDATE_COUNTRY_CONTINENT,
   UPDATE_COUNTRY_DATA,
+  UPDATE_COUNTRY_LAT,
+  UPDATE_COUNTRY_LNG,
   UPDATE_COUNTRY_TEMPERATURE,
   UPDATE_HOLIDAY_ACTIVITY,
   UPDATE_HOLIDAY_COUNTRY,
@@ -25,6 +27,8 @@ import {
   UPDATE_HOLIDAY_HIGHLIGHT,
   UpdateCountryContinentAction,
   UpdateCountryDataAction,
+  UpdateCountryLat,
+  UpdateCountryLng,
   UpdateCountryTemperature,
   UpdateHolidayActivityAction,
   UpdateHolidayCountryAction,
@@ -67,6 +71,10 @@ export function dataReducer(
             },
             foodScore: 5,
             foodTypes: [],
+            latLng: {
+              lat: '55.3781',
+              lng: '3.4360',
+            },
             monthlyTemperatures: {
               0: {
                 _id: undefined,
@@ -345,6 +353,42 @@ export function dataReducer(
           country
         )),
     };
+    case UPDATE_COUNTRY_LNG:
+      const updateCountryLng = action as UpdateCountryLng;
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryLng.countryId
+          ?
+          {
+            ...country,
+            latLng: {
+              ...country.latLng,
+              lng: updateCountryLng.newLng,
+            },
+          }
+          :
+          country
+        )),
+      };
+    case UPDATE_COUNTRY_LAT:
+      const updateCountryLat = action as UpdateCountryLat;
+      return {
+        ...state,
+        countries: state.countries.map((country) => (
+          country._id === updateCountryLat.countryId
+          ?
+          {
+            ...country,
+            latLng: {
+              ...country.latLng,
+              lat: updateCountryLat.newLat,
+            },
+          }
+          :
+          country
+        )),
+      };
 
     default:
       return state;
