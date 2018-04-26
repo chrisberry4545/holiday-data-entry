@@ -78,50 +78,62 @@ export function dataReducer(
             monthlyTemperatures: {
               0: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               1: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               2: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               3: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               4: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               5: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               6: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               7: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               8: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               9: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               10: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
               11: {
                 _id: undefined,
+                minValue: 0,
                 name: undefined,
               },
             },

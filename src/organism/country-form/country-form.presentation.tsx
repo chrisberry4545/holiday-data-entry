@@ -103,7 +103,7 @@ export const CountryFormPresentation: React.SFC<
                 }>
                 <SelectBoxPresentation options={
                   allTemperatures.map((temperature) => ({
-                    label: temperature.name,
+                    label: `Atleast ${temperature.minValue.toString()}°`,
                     value: temperature._id,
                   })) }
                   onChange={
