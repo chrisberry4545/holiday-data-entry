@@ -149,6 +149,7 @@ export function dataReducer(
           {
             _id: (action as AddNewHolidayLocallyAction).holidayId,
             activities: [],
+            country: {},
             flight: {},
             highlights: [],
             name: 'Untitled',

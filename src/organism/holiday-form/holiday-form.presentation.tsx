@@ -71,7 +71,7 @@ export const HolidayFormPresentation: React.SFC<
             <SelectBoxPresentation options={ allCountries.map((country) => ({
               label: country.name,
               value: country._id,
-            })) } onChange={ (newValue: string) => holidayCountryChange(
+            })) } onChange={ (newValue) => holidayCountryChange(
               holiday._id, newValue,
             ) }
               selectedValue={ holiday.country._id }
