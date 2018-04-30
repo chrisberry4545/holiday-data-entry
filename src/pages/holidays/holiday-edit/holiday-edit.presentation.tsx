@@ -24,7 +24,7 @@ export const HolidayEditPresentation: React.SFC<
     <div className='o-container c-holiday-edit'>
       <h1>{ holiday.name } - edit</h1>
 
-      <HolidayFormComponent holiday={ holiday }/>
+      <HolidayFormComponent />
 
       <button onClick={ () => updateData(holiday._id) }>
         Update

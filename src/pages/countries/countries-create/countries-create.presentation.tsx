@@ -24,7 +24,7 @@ export const CountriesCreatePresentation: React.SFC<
     <div className='o-container c-countries-create'>
       <h1>Countries create</h1>
 
-      <CountryFormComponent country={ country } />
+      <CountryFormComponent />
 
       <button onClick={ () => createCountry(country._id) }>
         Save

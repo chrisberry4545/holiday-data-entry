@@ -9,5 +9,5 @@ export interface HolidayFormStateProps {
   allActivities: ActivityCategoryInterface[];
   allCountries: CountryInterface[];
   allFlights: FlightTimesInterface[];
-  holiday?: HolidayInterface;
+  holiday: HolidayInterface;
 }

@@ -13,6 +13,9 @@ import { push } from 'react-router-redux';
 
 import {
   Action,
+  selectContinents,
+  selectSelectedCountry,
+  selectTemperatures,
   updateCountryContinent,
   updateCountryData,
   updateCountryLat,
@@ -34,8 +37,9 @@ const mapStateToProps = (
   state: StateInterface,
 ): CountryFormStateProps => {
   return {
-    allContinents: state.main.data.continents,
-    allTemperatures: state.main.data.temperature,
+    allContinents: selectContinents(state),
+    allTemperatures: selectTemperatures(state),
+    country: selectSelectedCountry(state),
   };
 };
 

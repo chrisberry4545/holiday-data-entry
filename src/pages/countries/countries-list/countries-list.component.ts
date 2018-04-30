@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import {
   Action,
   goToAddCountryThunk,
+  selectCountries,
 } from './../../../store';
 
 import {
@@ -27,7 +28,7 @@ const mapStateToProps = (
   state: StateInterface,
 ): CountriesListStateProps => {
   return {
-    allCountries: state.main.data.countries,
+    allCountries: selectCountries(state),
   };
 };
 

@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import {
   Action,
   addNewHolidayThunk,
+  selectSelectedHoliday,
 } from './../../../store';
 
 import {
@@ -23,10 +24,6 @@ import {
 } from './../../../models';
 
 import {
-  getIdFromState,
-} from './../../../helpers';
-
-import {
   HolidayInterface,
 } from '@chrisb-dev/holiday-shared-models';
 
@@ -34,9 +31,7 @@ const mapStateToProps = (
   state: StateInterface,
 ): HolidayCreateStateProps => {
   return {
-    holiday: state.main.data.holidays.find((holiday) => (
-      holiday._id === getIdFromState(state)
-    )),
+    holiday: selectSelectedHoliday(state),
   };
 };
 

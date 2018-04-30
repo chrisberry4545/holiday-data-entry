@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import {
   Action,
   addNewCountryThunk,
+  selectSelectedCountry,
 } from './../../../store';
 
 import {
@@ -22,17 +23,11 @@ import {
   StateInterface,
 } from './../../../models';
 
-import {
-  getIdFromState,
-} from './../../../helpers';
-
 const mapStateToProps = (
   state: StateInterface,
 ): CountriesCreateStateProps => {
   return {
-    country: state.main.data.countries.find((country) => (
-      country._id === getIdFromState(state)
-    )),
+    country: selectSelectedCountry(state),
   };
 };
 

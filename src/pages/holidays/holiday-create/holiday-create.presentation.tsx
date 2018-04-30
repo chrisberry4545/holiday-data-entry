@@ -24,7 +24,7 @@ export const HolidayCreatePresentation: React.SFC<
     <div className='o-container c-holiday-create'>
       <h1>Create holiday</h1>
 
-      <HolidayFormComponent holiday={ holiday }/>
+      <HolidayFormComponent />
 
       <button onClick={ () => createHoliday(holiday._id) }>
         Save

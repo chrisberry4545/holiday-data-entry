@@ -7,5 +7,5 @@ import {
 export interface CountryFormStateProps {
   allContinents: ContinentInterface[];
   allTemperatures: TemperatureInterface[];
-  country?: CountryInterface;
+  country: CountryInterface;
 }

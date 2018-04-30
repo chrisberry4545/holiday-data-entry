@@ -14,6 +14,7 @@ import { push } from 'react-router-redux';
 import {
   Action,
   goToAddHolidayThunk,
+  selectHolidays,
 } from './../../../store';
 
 import {
@@ -31,7 +32,7 @@ const mapStateToProps = (
   state: StateInterface,
 ): HolidayListStateProps => {
   return {
-    holidays: state.main.data.holidays,
+    holidays: selectHolidays(state),
   };
 };
 
