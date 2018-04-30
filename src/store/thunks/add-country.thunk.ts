@@ -9,6 +9,7 @@ import {
 
 import {
   Action,
+  selectCountryWithId,
 } from './../../store/';
 
 import {
@@ -28,9 +29,7 @@ ThunkAction<Promise<Action>, StateInterface, void>
   return (
     dispatch: Dispatch<StateInterface>, getState,
   ): Promise<Action> => {
-    const countryToSave =
-      getState().main.data.countries
-      .find((country) => country._id === countryId);
+    const countryToSave = selectCountryWithId(countryId)(getState());
     const retrieveDataService = new RetrieveDataService();
     return retrieveDataService.createNewCountry(countryToSave).then(() => {
       return dispatch(push(`/${URLS.COUNTRIES_LIST}`));

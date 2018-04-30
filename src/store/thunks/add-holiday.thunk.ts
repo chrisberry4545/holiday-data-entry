@@ -9,6 +9,7 @@ import {
 
 import {
   Action,
+  selectHolidayWithId,
 } from './../../store/';
 
 import {
@@ -28,9 +29,7 @@ ThunkAction<Promise<Action>, StateInterface, void>
   return (
     dispatch: Dispatch<StateInterface>, getState,
   ): Promise<Action> => {
-    const holidayToSave =
-      getState().main.data.holidays
-      .find((holiday) => holiday._id === holidayId);
+    const holidayToSave = selectHolidayWithId(holidayId)(getState());
     const retrieveDataService = new RetrieveDataService();
     return retrieveDataService.createNewHoliday(holidayToSave).then(() => {
       return dispatch(push(`/${URLS.HOLIDAYS_LIST}`));

@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import {
   Action,
   saveHolidayDataThunk,
+  selectSelectedHoliday,
 } from './../../../store';
 
 import {
@@ -22,17 +23,11 @@ import {
   StateInterface,
 } from './../../../models';
 
-import {
-  getIdFromState,
-} from './../../../helpers';
-
 const mapStateToProps = (
   state: StateInterface,
 ): HolidayEditStateProps => {
   return {
-    holiday: state.main.data.holidays.find((holiday) => (
-      holiday._id === getIdFromState(state)
-    )),
+    holiday: selectSelectedHoliday(state),
   };
 };
 

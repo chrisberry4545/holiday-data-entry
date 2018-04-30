@@ -22,10 +22,6 @@ import {
   URLS,
 } from './../../models';
 
-import {
-  getIdFromState,
-} from './../../helpers';
-
 const mapStateToProps = (
   state: StateInterface,
 ): NavStateProps => {

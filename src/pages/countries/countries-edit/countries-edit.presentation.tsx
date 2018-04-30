@@ -24,7 +24,7 @@ export const CountriesEditPresentation: React.SFC<
     <div className='o-container c-countries-edit'>
       <h1>Countries edit</h1>
 
-      <CountryFormComponent country={ country } />
+      <CountryFormComponent />
 
       <button onClick={ () => updateData(country._id) }>
         Update

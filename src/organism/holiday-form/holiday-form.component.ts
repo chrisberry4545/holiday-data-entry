@@ -18,6 +18,10 @@ import {
   addBlankHolidayActivity,
   addBlankHolidayHighlight,
   saveHolidayDataThunk,
+  selectActivityCategories,
+  selectCountries,
+  selectFlightTimes,
+  selectSelectedHoliday,
   updateHolidayActivity,
   updateHolidayCountry,
   updateHolidayData,
@@ -36,17 +40,14 @@ import {
   URLS,
 } from './../../models';
 
-import {
-  getIdFromState,
-} from './../../helpers';
-
 const mapStateToProps = (
   state: StateInterface,
 ): HolidayFormStateProps => {
   return {
-    allActivities: state.main.data.activityCategories,
-    allCountries: state.main.data.countries,
-    allFlights: state.main.data.flightTimes,
+    allActivities: selectActivityCategories(state),
+    allCountries: selectCountries(state),
+    allFlights: selectFlightTimes(state),
+    holiday: selectSelectedHoliday(state),
   };
 };
 

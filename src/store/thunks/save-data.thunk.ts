@@ -9,6 +9,8 @@ import {
 
 import {
   Action,
+  selectCountryWithId,
+  selectHolidayWithId,
 } from './../../store/';
 
 import {
@@ -29,8 +31,7 @@ ThunkAction<Promise<Action>, StateInterface, void>
     dispatch: Dispatch<StateInterface>, getState,
   ): Promise<Action> => {
     const retrieveDataService = new RetrieveDataService();
-    const holidayToSave = getState().main.data
-      .holidays.find((holiday) => holiday._id === holidayId);
+    const holidayToSave = selectHolidayWithId(holidayId)(getState());
     return retrieveDataService.saveHolidayData(holidayToSave).then(() => {
       return dispatch(push(`/${URLS.HOLIDAYS_LIST}`));
     });
@@ -46,8 +47,7 @@ ThunkAction<Promise<Action>, StateInterface, void>
     dispatch: Dispatch<StateInterface>, getState,
   ): Promise<Action> => {
     const retrieveDataService = new RetrieveDataService();
-    const countryToSave = getState().main.data
-      .countries.find((country) => country._id === countryId);
+    const countryToSave = selectCountryWithId(countryId)(getState());
     return retrieveDataService.saveCountryData(countryToSave).then(() => {
       return dispatch(push(`/${URLS.COUNTRIES_LIST}`));
     });
