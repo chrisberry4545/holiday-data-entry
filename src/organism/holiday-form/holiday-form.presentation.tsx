@@ -26,6 +26,7 @@ export const HolidayFormPresentation: React.SFC<
   holidayDescriptionChanged, holidayCountryChange,
   holidayFlightTimeChange, holidayFlightCostChange,
   onAddActivity, onAddHighlight, onHolidayActivityChanged,
+  onDeleteActivity, onDeleteHighlight,
   onHolidayHighlightDescriptionChanged,
   onHolidayHighlightImageUrlChanged, onHolidayHighlightTitleChanged,
 }) => {
@@ -114,24 +115,32 @@ export const HolidayFormPresentation: React.SFC<
         <h3>Activities</h3>
 
         { holiday.activities.map((activity, activityIndex) => (
-          <div className='o-spacing-bottom'
-            key={ `${activity._id}${activityIndex}` }>
-            <InputWithLabelPresentation
-              label={ `Activity ${activityIndex + 1}` }>
-              <SelectBoxPresentation options={
-                  allActivities.map((activityCategory) => ({
-                    label: activityCategory.name,
-                    value: activityCategory._id,
-                  }))
-                }
-                onChange={ (newValue) => (
-                  onHolidayActivityChanged(
-                    holiday._id, activityIndex, newValue,
-                  )
-                ) }
-                selectedValue={ activity._id }
-                />
-            </InputWithLabelPresentation>
+          <div key={ `${activity._id}${activityIndex}` }>
+            <div className='o-spacing-bottom'>
+              <InputWithLabelPresentation
+                label={ `Activity ${activityIndex + 1}` }>
+                <SelectBoxPresentation options={
+                    allActivities.map((activityCategory) => ({
+                      label: activityCategory.name,
+                      value: activityCategory._id,
+                    }))
+                  }
+                  onChange={ (newValue) => (
+                    onHolidayActivityChanged(
+                      holiday._id, activityIndex, newValue,
+                    )
+                  ) }
+                  selectedValue={ activity._id }
+                  />
+              </InputWithLabelPresentation>
+            </div>
+
+            <button type='button' className='o-spacing-bottom'
+              onClick={ () => onDeleteActivity(
+                holiday._id, activity._id,
+              ) }>
+              Delete activity
+            </button>
           </div>
         )) }
 
@@ -187,6 +196,12 @@ export const HolidayFormPresentation: React.SFC<
             <div className='o-spacing-bottom'>
               <img src={ highlight.imageUrl } />
             </div>
+            <button type='button' className='o-spacing-bottom'
+              onClick={ () => onDeleteHighlight(
+                holiday._id, highlight._id,
+              ) }>
+              Delete highlight
+            </button>
           </div>
         )) }
 

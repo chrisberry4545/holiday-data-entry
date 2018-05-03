@@ -73,6 +73,22 @@ export function addBlankHolidayActivity(
   };
 }
 
+export interface DeleteHolidayActivityAction extends Action {
+  activityId: string;
+  holidayId: string;
+}
+export const DELETE_HOLIDAY_ACTIVITY = 'DELETE_HOLIDAY_ACTIVITY';
+export function deleteHolidayActivity(
+  holidayId: string,
+  activityId: string,
+): DeleteHolidayActivityAction {
+  return {
+    activityId,
+    holidayId,
+    type: DELETE_HOLIDAY_ACTIVITY,
+  };
+}
+
 export interface AddBlankHolidayHighlightAction extends Action {
   holidayId: string;
 }
@@ -83,6 +99,22 @@ export function addBlankHolidayHighlight(
   return {
     holidayId,
     type: ADD_BLANK_HOLIDAY_HIGHLIGHT,
+  };
+}
+
+export interface DeleteHolidayHighlightAction extends Action {
+  highlightId: string;
+  holidayId: string;
+}
+export const DELETE_HOLIDAY_HIGHLIGHT = 'DELETE_HOLIDAY_HIGHLIGHT';
+export function deleteHolidayHighlight(
+  holidayId: string,
+  highlightId: string,
+): DeleteHolidayHighlightAction {
+  return {
+    highlightId,
+    holidayId,
+    type: DELETE_HOLIDAY_HIGHLIGHT,
   };
 }
 

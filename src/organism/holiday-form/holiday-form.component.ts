@@ -17,6 +17,8 @@ import {
   Action,
   addBlankHolidayActivity,
   addBlankHolidayHighlight,
+  deleteHolidayActivity,
+  deleteHolidayHighlight,
   saveHolidayDataThunk,
   selectActivityCategories,
   selectCountries,
@@ -110,6 +112,16 @@ const mapDispatchToProps = (
     },
     onAddHighlight: (holidayId: string) => {
       dispatch(addBlankHolidayHighlight(holidayId));
+    },
+    onDeleteActivity: (holidayId: string, activityId: string) => {
+      dispatch(deleteHolidayActivity(
+        holidayId, activityId,
+      ));
+    },
+    onDeleteHighlight: (holidayId: string, highlightId: string) => {
+      dispatch(deleteHolidayHighlight(
+        holidayId, highlightId,
+      ));
     },
     onHolidayActivityChanged: (
       holidayId: string,

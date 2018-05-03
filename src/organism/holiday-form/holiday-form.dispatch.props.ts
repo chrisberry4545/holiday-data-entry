@@ -24,7 +24,9 @@ export interface HolidayFormDispatchProps {
     newFlightCost: number,
   ) => void;
 
+  onDeleteActivity: (holidayId: string, activityId: string) => void;
   onAddActivity: (holidayId: string) => void;
+  onDeleteHighlight: (holidayId: string, highlightId: string) => void;
   onAddHighlight: (holidayId: string) => void;
 
   onHolidayActivityChanged: (
