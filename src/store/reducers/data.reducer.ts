@@ -15,6 +15,10 @@ import {
   AddBlankHolidayHighlightAction,
   AddNewCountryLocallyAction,
   AddNewHolidayLocallyAction,
+  DELETE_HOLIDAY_ACTIVITY,
+  DELETE_HOLIDAY_HIGHLIGHT,
+  DeleteHolidayActivityAction,
+  DeleteHolidayHighlightAction,
   UPDATE_COUNTRY_CONTINENT,
   UPDATE_COUNTRY_DATA,
   UPDATE_COUNTRY_LAT,
@@ -254,6 +258,43 @@ export function dataReducer(
             holiday
           )),
         };
+
+    case DELETE_HOLIDAY_ACTIVITY:
+        const deleteHolidayActivityAction =
+          action as DeleteHolidayActivityAction;
+        return {
+          ...state,
+          holidays: state.holidays.map((holiday) => (
+            holiday._id === deleteHolidayActivityAction.holidayId
+            ?
+            {
+              ...holiday,
+              activities: holiday.activities.filter((activity) => (
+                activity._id !== deleteHolidayActivityAction.activityId
+              )),
+            }
+            :
+            holiday
+          )),
+        };
+    case DELETE_HOLIDAY_HIGHLIGHT:
+      const deleteHolidayHighlightAction =
+        action as DeleteHolidayHighlightAction;
+      return {
+        ...state,
+        holidays: state.holidays.map((holiday) => (
+          holiday._id === deleteHolidayHighlightAction.holidayId
+          ?
+          {
+            ...holiday,
+            highlights: holiday.highlights.filter((highlight) => (
+              highlight._id !== deleteHolidayHighlightAction.highlightId
+            )),
+          }
+          :
+          holiday
+        )),
+      };
 
     case UPDATE_HOLIDAY_ACTIVITY:
         const updateHolidayActivityAction =
