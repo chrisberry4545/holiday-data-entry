@@ -1,14 +1,17 @@
 import {
+  API_URLS,
   CountryInterface,
   HolidayInterface,
+  UserInputInterface,
 } from '@chrisb-dev/holiday-shared-models';
 
 import {
   AllDataInterface,
 } from './../../models';
 
-const backendUrl = `process.env.BACKEND_URLdata`;
-const backendCountryUrl = `${backendUrl}/country`;
+const backendBaseUrl = `process.env.BACKEND_URL`;
+const backendDataUrl = `${backendBaseUrl}data`;
+const backendCountryUrl = `${backendDataUrl}/country`;
 
 const getJSONHeaders = () => ({
   'Accept': 'application/json',
@@ -17,13 +20,13 @@ const getJSONHeaders = () => ({
 
 export class RetrieveDataService {
   public getBackendData(): Promise<AllDataInterface> {
-    return fetch(backendUrl).then((resp) => resp.json());
+    return fetch(backendDataUrl).then((resp) => resp.json());
   }
 
   public saveHolidayData(
     holiday: HolidayInterface,
   ) {
-    return fetch(backendUrl, {
+    return fetch(backendDataUrl, {
       body: JSON.stringify(holiday),
       headers: getJSONHeaders(),
       method: 'PATCH',
@@ -31,7 +34,7 @@ export class RetrieveDataService {
   }
 
   public createNewHoliday(holiday: HolidayInterface) {
-    return fetch(backendUrl, {
+    return fetch(backendDataUrl, {
       body: JSON.stringify(holiday),
       headers: getJSONHeaders(),
       method: 'POST',
@@ -52,5 +55,15 @@ export class RetrieveDataService {
       headers: getJSONHeaders(),
       method: 'POST',
     });
+  }
+
+  public getHolidayResults(
+    userInput: UserInputInterface,
+  ): Promise<HolidayInterface[]> {
+    return fetch(`${backendBaseUrl}${API_URLS.HOLIDAY_RESULTS}`, {
+      body: JSON.stringify(userInput),
+      headers: getJSONHeaders(),
+      method: 'POST',
+    }).then((resp) => resp.json());
   }
 }

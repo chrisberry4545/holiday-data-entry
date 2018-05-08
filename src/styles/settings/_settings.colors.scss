@@ -1,2 +1,5 @@
 $text-color-1: #000000 !default;
 $primary-color: teal !default;
+$selection-color: $primary-color !default;
+$selector-color: darken($primary-color, 20%) !default;
+$loading-spinner-color: #000000;

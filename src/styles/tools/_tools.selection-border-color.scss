@@ -1,0 +1,6 @@
+@mixin selection-border-hover {
+  @include hover-transition(border-color);
+  &:hover {
+    border-color: lighten($selection-color, 10%);
+  }
+}

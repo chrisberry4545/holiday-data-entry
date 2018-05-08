@@ -39,6 +39,9 @@ const mapDispatchToProps = (
     goToHolidaysList: () => {
       dispatch(push(`/${URLS.HOLIDAYS_LIST}`));
     },
+    goToScores: () => {
+      dispatch(push(`/${URLS.SCORES}`));
+    },
   };
 };
 

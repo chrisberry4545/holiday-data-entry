@@ -21,7 +21,7 @@ const fileLoader = require('./shared-webpack/loaders/file.loader');
 const imageLoader = require('./shared-webpack/loaders/image.loader');
 
 const partnerName = process.env.PARTNER_NAME;
-const backendUrl = 'http://localhost:5000/';
+const backendUrl = 'https://holiday-backend.herokuapp.com/';
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.

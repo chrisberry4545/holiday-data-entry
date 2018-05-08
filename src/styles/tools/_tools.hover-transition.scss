@@ -1,0 +1,10 @@
+@mixin hover-transition(
+  $animate-property,
+  $animation-time-enter: $default-animation-time-enter,
+  $animation-time-exit: $default-animation-time-exit
+) {
+  transition: $animate-property $animation-time-exit;
+  &:hover {
+    transition: $animate-property $animation-time-enter;
+  }
+}
