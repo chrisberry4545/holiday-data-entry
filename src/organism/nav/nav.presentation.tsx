@@ -25,6 +25,7 @@ export const NavPresentation: React.SFC<
 > = ({
   goToCountriesList,
   goToHolidaysList,
+  goToScores,
 }) => {
   return (
     <nav>
@@ -33,6 +34,9 @@ export const NavPresentation: React.SFC<
       </button>
       <button className='c-nav__link' onClick={ goToCountriesList }>
         Countries
+      </button>
+      <button className='c-nav__link' onClick={ goToScores }>
+        Scores
       </button>
     </nav>
   );

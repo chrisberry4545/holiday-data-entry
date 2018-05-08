@@ -34,6 +34,7 @@ import {
   HolidayEditComponent,
   HolidayListComponent,
   LandingComponent,
+  ScoresComponent,
 } from './../../pages';
 
 import {
@@ -113,6 +114,9 @@ extends Component<Props<{}>, SharedAppStateInterface> {
                     component={ HolidayEditComponent } />
                   <Route exact path={ `/${URLS.HOLIDAYS_CREATE}/:id` }
                     component={ HolidayCreateComponent } />
+
+                  <Route exact path={ `/${URLS.SCORES}` }
+                    component={ ScoresComponent } />
                 </Switch>
               </section>
             ) } />

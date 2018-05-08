@@ -10,4 +10,6 @@ export const URLS = {
   HOLIDAYS_LIST: 'holidays',
 
   LANDING: '',
+
+  SCORES: 'scores',
 };

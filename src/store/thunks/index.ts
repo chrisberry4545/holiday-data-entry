@@ -7,3 +7,5 @@ export * from './go-to-add-country.thunk';
 export * from './go-to-add-holiday.thunk';
 
 export * from './save-data.thunk';
+
+export * from './update-scores.thunk';
